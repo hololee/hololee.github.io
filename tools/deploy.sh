@@ -46,7 +46,7 @@ init() {
 }
 
 shift_imgs(){
-  mv _posts/assets/img/posts/* assets/img/posts/
+  mv _posts/assets/img/posts/* assets/img/posts
 }
 
 build() {
