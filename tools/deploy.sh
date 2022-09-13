@@ -46,6 +46,7 @@ init() {
 }
 
 shift_imgs(){
+  ls -al assets/img/posts
   mv _posts/assets/img/posts/* assets/img/posts
 }
 
