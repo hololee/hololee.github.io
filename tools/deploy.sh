@@ -45,6 +45,10 @@ init() {
   _baseurl="$(grep '^baseurl:' _config.yml | sed "s/.*: *//;s/['\"]//g;s/#.*//")"
 }
 
+shift_imgs(){
+  mv "_posts/assets/img/posts/*" "assets/img/posts/"
+}
+
 build() {
   # clean up
   if [[ -d $SITE_DIR ]]; then
@@ -118,6 +122,7 @@ deploy() {
 
 main() {
   init
+  shift_imgs
   build
   test
   resume_site_dir
