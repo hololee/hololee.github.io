@@ -15,14 +15,14 @@ img_path: /
 
 다음 커멘드를 이용해서 가상 환경을 생성합니다:
 
-```
+```bash
 conda create --name project-setup python=3.8
 conda activate project-setup
 ```
 
 requirements를 설치합니다:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 requirements를 설치한 후에 모델을 학습을 간단하게 실행할 수 있습니다:
 
-```
+```bash
 python train.py
 ```
 
@@ -40,7 +40,7 @@ python train.py
 
 학습이 끝난 후 모델 checkpoint path를 업데이트하고 아래처럼 실행합니다.
 
-```
+```bash
 python inference.py
 ```
 
@@ -52,7 +52,7 @@ virtualenv를 사용하기때문에,  `jupyter lab` 커멘드를 이용할때 vi
 
 virutalenv를 사용하기 위해서 `jupyter lab`실행전 아래의 커맨드를 입력합니다.
 
-```
+```bash
 conda install ipykernel
 python -m ipykernel install --user --name project-setup
 pip install ipywidgets
@@ -101,11 +101,11 @@ pip install ipywidgets
 데이터를 다운로드 하고 로드하기 위해서 [Huggingface datasets](https://huggingface.co/docs/datasets/quicktour.html)을 사용합니다. 이 라이브러리는 800+의 데이터셋을 지원하고 커스텀 데이터도 이용할 수 있습니다.   
 
 아래와 같이 쉽게 다운로드 할 수 있습니다.
-~~~
+~~~python
 cola_dataset = load_dataset("glue", "cola")
 print(cola_dataset)
 ~~~
-~~~
+~~~python
 DatasetDict({
     train: Dataset({
         features: ['sentence', 'label', 'idx'],
@@ -123,11 +123,11 @@ DatasetDict({
 ~~~
 
 데이터를 한번 살펴봅니다.
-~~~
+~~~python
 train_dataset = cola_dataset['train']
 print(train_dataset[0])
 ~~~
-~~~
+~~~json
 {
     'idx': 0,
     'label': 1,
@@ -159,7 +159,7 @@ print(train_dataset[0])
 - DataLoader로 감싸기
 
 프로젝트에서 사용하는 `DataModule`코드는 다음과 같습니다.
-~~~
+~~~python
 class DataModule(pl.LightningDataModule):
     def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", batch_size=32):
         super().__init__()
@@ -225,7 +225,7 @@ PyTorch Lightning에서 모델은 [LightningModule](https://pytorch-lightning.re
 이외에도 다양한 기능들을 이용할 수 있습니다. 자세한 정보는 [여기](https://pytorch-lightning.readthedocs.io/en/latest/common/lightning_module.html)를 확인하세요.   
 
 이 프로젝트에서는 다음과 같이 `LightningModule`을 이용합니다.
-~~~
+~~~python
 class ColaModel(pl.LightningModule):
     def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=1e-2):
         super(ColaModel, self).__init__()
@@ -269,7 +269,7 @@ class ColaModel(pl.LightningModule):
 `Trainer`는 여러가지 옵션들로 로깅, 그라디언트 축적, half precision training, 분산 컴퓨팅 등과 같이 커스텀 할 수 있습니다.   
 
 여기서는 기본적인 예제를 이용하겠습니다.
-~~~
+~~~python
 cola_data = DataModule()
 cola_model = ColaModel()
 
@@ -287,7 +287,7 @@ trainer.fit(cola_model, cola_data)
 
 ## 📝 로깅   
 모델 학습을 로깅하는 것은 다음과 같이 간단합니다.
-~~~
+~~~python
 cola_data = DataModule()
 cola_model = ColaModel()
 
@@ -302,7 +302,7 @@ trainer.fit(cola_model, cola_data)
 ~~~
 
 `logs/cola`디렉터리가 생성되고 아래의 커맨드를 이용해서 tensorboard로 시각화할 수 있습니다.
-~~~
+~~~bash
 tensorboard --logdir logs/cola
 ~~~
 텐서보드는 `http://localhost:6006/`로 접근할 수 있습니다.
@@ -316,7 +316,7 @@ tensorboard --logdir logs/cola
 metric을 모니터링해서 어떤 모델을 저장할지 선택할 수 있습니다(여기서는 `val_loss`를 이용합니다.). 가장 좋은 모델은 `dirpath`에 저장됩니다.   
 
 Callback에 대한 자세한 정보는 [여기](https://pytorch-lightning.readthedocs.io/en/latest/extensions/callbacks.html)를 참고해주세요.   
-~~~
+~~~python
 cola_data = DataModule()
 cola_model = ColaModel()
 
@@ -336,7 +336,7 @@ trainer.fit(cola_model, cola_data)
 ~~~
 
 또한 callback을 여러개 엮을 수 있습니다. `EarlyStopping`callback은 특정 파라미터(여기서는 `val_loss`를 이용합니다.)를 모니터링하면서 모델의 overfit을 방지합니다.   
-~~~
+~~~python
 early_stopping_callback = EarlyStopping(
     monitor="val_loss", patience=3, verbose=True, mode="min"
 )
@@ -361,7 +361,7 @@ trainer.fit(cola_model, cola_data)
 - 런타임 입력 얻기
 - 입력을 알맞은 포멧으로 변경하기
 - 예측값 얻기
-~~~
+~~~python
 class ColaPredictor:
     def __init__(self, model_path):
         self.model_path = model_path
