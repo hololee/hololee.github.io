@@ -7,11 +7,6 @@ order: 4
 > 아래의 정보는 링크드인 프로필의 내용을 바탕으로 작성되었습니다.
 {: .prompt-info}
 
-## Contact  
-lccandol@naver.com  
-[linkedin](www.linkedin.com/in/hololee-0410201b3)  
-[blog](https://blog.naver.com/lccandol)
-
 ## Top Skills  
 - Mobile Applications
 - Deep Learning
