@@ -6,6 +6,9 @@ tags: [ai, mlops, devops]     # TAG names should always be lowercase
 img_path: /
 ---
 
+>이 포스트는 작성자의 허락을 받아 번역하고 게시하였습니다. 내용과 관련한 질문은 [작성자의 repo](https://github.com/graviraja/MLOps-Basics)를 이용해주세요.
+{: .prompt-info}
+
 # MLOps-베이직
 
  > There is nothing magic about magic. The magician merely understands something simple which doesn’t appear to be simple or natural to the untrained audience. Once you learn how to hold a card while making your hand look empty, you only need practice before you, too, can “do magic.” – Jeffrey Friedl, 서적 Mastering Regular Expressions
