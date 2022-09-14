@@ -13,7 +13,7 @@ img_path: /
 
 **Note: 제안, 수정 또는 피드백이 있는 경우 Issue를 올려주세요.**   
 
-- * 원 작성자의 허락을 받아서 리포를 번역했습니다. 오역이 있을 수도 있으니 `main` branch나 [원본 리포](https://github.com/graviraja/MLOps-Basics)를 참고해주세요.*
+- *원 작성자의 허락을 받아서 리포를 번역했습니다. 오역이 있을 수도 있으니 `main` branch나 [원본 리포](https://github.com/graviraja/MLOps-Basics)를 참고해주세요.*
 
 MLOps-Basics 시리즈의 목표는 모델의 `구축(building)`, `모니터링(monitoring)`, `구성(configurations)`, `테스트(testing)`, `패키징(packaging)`, `배포(deployment)`, `CI/CD`와 같은 MLOps의 기본을 이해하는 것입니다.
 
