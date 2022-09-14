@@ -3,7 +3,6 @@ title: MLOps-Basics week0 프로젝트 셋업
 date: 2021-12-19 21:00:00 +0900
 categories: [AI, MLOps]
 tags: [ai, mlops, devops]     # TAG names should always be lowercase
-pin: true
 img_path: /
 ---
 

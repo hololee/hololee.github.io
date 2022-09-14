@@ -3,7 +3,6 @@ title: MLOps-Basics
 date: 2021-12-07 21:00:00 +0900
 categories: [AI, MLOps]
 tags: [ai, mlops, devops]     # TAG names should always be lowercase
-pin: true
 img_path: /
 ---
 
