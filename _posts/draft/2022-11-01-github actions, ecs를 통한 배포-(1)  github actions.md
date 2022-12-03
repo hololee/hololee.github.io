@@ -1,4 +1,4 @@
----
+<!-- ---
 title: github actions, ecs를 통한 배포 (1)  github actions
 date: 2022-11-01 18:29:00 +0900
 categories: [AWS, ECS]
@@ -9,7 +9,7 @@ tags: [aws, mlops, devops]     # TAG names should always be lowercase
 # toc: false     # Table Of Contents
 # comments: false 
 img_path: /
----
+--- -->
 
 # github actions, ecs를 통한 배포 (1)  github actions
 
