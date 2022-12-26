@@ -66,11 +66,11 @@ non-negative function 인 $\phi(x)$가 있을때 분포  $p(x) = { {\phi(x)} \ov
 
 Forwardf Trajectory의 수식은 다음과 같다.
 
-$$ 
+$$
 \begin{align} 
 \pi(\mathbf{y}) &= \int{d\mathbf{y}'T_\pi(\mathbf{y}|\mathbf{y}';\beta) \pi(\mathbf{y}')} \\ 
 q(\mathbf{x^{(t)}|\mathbf{x}^{(t-1)}}) &= T_\pi (\mathbf{x^{(t)}|\mathbf{x}^{(t-1)}} ; \beta_t) 
-\end{align} 
+\end{align}
 $$
 
 <br>
@@ -250,7 +250,6 @@ $$
 \tilde{p}(\mathbf{x}^{(t)}) = { {1}\over{\tilde{Z_t}}}p(\mathbf{x}^{(t)})r(\mathbf{x}^{(t)})
 $$
 
-
 ### Modified diffusion steps
 
 앞서 위에서 보았던 수식을 정리하면 reverse diffusion의 마르코프 커널은 다음식처럼 표현이 가능하다.
@@ -261,7 +260,6 @@ $$
 
 <br>
 이를 새로 만들어진 분포에 적용하면,
-
 $$
 \begin{align}
 \tilde{p}(x^{(t)}) &= \int{d\mathbf{x}^{(t+1)} \tilde{p}(\mathbf{x}^{(t)}|\mathbf{x}^{(t+1)})} \cdot \tilde{p}(\mathbf{x}^{(t+1)}) \\
@@ -295,7 +293,7 @@ $$
 
 <br>
 여기서 $$r(\mathbf{x}^{(t)})$$ 가 smooth한 분포를 가지면 노이즈 정도로 여길수 있고 $$\tilde{p}(\mathbf{x}^{(t)} | \mathbf{x}^{(t+1)})$$과 $${p}(\mathbf{x}^{(t)}|\mathbf{x}^{(t+1)})$$는 같은 형태를 가지게 된다. (smooth의 기준이 uniform distribution에 가까운 분포의 형태를 말하는것 같다. 변화가 적은?)
- 
+
 
 <br>
 이때 $r(\mathbf{x}^{(t)})$는 각 step에 따라서 천천히 변해야 하는데, 논문에서는 그냥 상수를 사용해버렸다.
