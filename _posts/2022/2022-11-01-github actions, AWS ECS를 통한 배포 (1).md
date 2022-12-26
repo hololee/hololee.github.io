@@ -4,7 +4,7 @@ date: 2022-11-01 18:29:00 +0900
 categories: [AWS, ECS]
 tags: [aws, mlops, devops]     # TAG names should always be lowercase
 # pin: true
-# mermaid: true
+mermaid: true
 # math: true
 # toc: false     # Table Of Contents
 # comments: false 
@@ -291,13 +291,9 @@ sudo service ecs start
 - [What is Amazon Elastic Container Service?](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
 - [Amazon ECS Workshop](https://ecsworkshop.com)
 - [CodeDeploy란 무엇인가요?](https://docs.aws.amazon.com/ko_kr/codedeploy/latest/userguide/welcome.html)
-
 - [ECS 개발자 안내서](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/Welcome.html)
-
 - [ecs-refarch-batch-processing](https://github.com/aws-samples/ecs-refarch-batch-processing)
-
 - [Docker- github cache](https://docs.docker.com/build/ci/github-actions/examples/#cache)
-
 - [ecs-agent-install](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/ecs-agent-install.html)
 
 
@@ -305,24 +301,14 @@ sudo service ecs start
 ## blog
 
 - [github-action 으로 ec2 에 배포하기](https://blog.bespinglobal.com/post/github-action-으로-ec2-에-배포하기/)
-
 - [workflow_dispatch를 이용한 github action 수동 트리거](https://www.hahwul.com/2020/10/18/how-to-trigger-github-action-manually/)
-
 - [GitHub Actions의 workflow_call로 워크플로우 재사용하기](https://blog.outsider.ne.kr/1591)
-
 - [AWS로 배포하기 시리즈 - 1. Code Deploy 사용하기](https://jojoldu.tistory.com/281)
-
 - [ECS로 서버 배포 및 자동화하기](https://blog.naver.com/sssang97/222626113440)
-
 - [AWS ECS 살펴보기](https://boostbrothers.github.io/technology/2020/01/29/AWS-ECS-살펴보기/)
-
 - [[소개] amazon-ecs란](https://tech.cloud.nongshim.co.kr/2021/08/30/소개-amazon-ecs란/)
-
 - [How to add github secrets to env variable](https://github.com/docker/build-push-action/issues/390)
-
 - [Sharing environment variables using Github Action secrets](https://andrei-calazans.com/posts/2021-06-23/passing-secrets-github-actions-docker)
-
 - [GitHub Actions workflow를 수동으로 trigger하기(feat. inquirer.js)](https://fe-developers.kakaoent.com/2022/220929-workflow-dispatch-with-inquirer-js/)
-
 - [GitHub Actions에서 도커 캐시를 적용해 이미지 빌드하기](https://fe-developers.kakaoent.com/2022/220414-docker-cache/)
 - [AWS 배포자동화 실제로 구축하기④ - ECS, ELB, EC2 인스턴스 생성하기](https://blog.naver.com/developer501/222692679078)
