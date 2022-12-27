@@ -287,4 +287,4 @@ plt.savefig(fname)
 
 p.s 웹 프론트 작업은 이 [리포](https://github.com/jeongahyun/flask-server-main)에 위치한다.
 
-[![video](http://img.youtube.com/vi/ycL7oE3h_m4/maxresdefault.jpg)](https://youtu.be/ycL7oE3h_m4)
+{% include 20201223-1.html id="ycL7oE3h_m4" %}  
