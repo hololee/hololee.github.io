@@ -21,7 +21,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 키리의 작업실                          # the main title
+title: 오늘도 어제처럼                          # the main title
 
 tagline: Vision AI에 관심있습니다.<br>바이크를 타고 디자인을 좋아합니다.   # it will display as the sub-title
 

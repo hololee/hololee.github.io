@@ -2,6 +2,10 @@
   The common styles
 */
 
+//fonts.
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR&display=swap');
+
 html {
   @media (prefers-color-scheme: light) {
 
@@ -27,7 +31,7 @@ html {
     }
   }
 
-  font-size: 16px;
+  font-size: 17px;
 }
 
 body {
@@ -35,7 +39,7 @@ body {
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 /* --- Typography --- */
@@ -469,8 +473,8 @@ img[data-src] {
 }
 
 .post-content {
-  font-size: 1.08rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.75;
   margin-top: 2rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -746,6 +750,7 @@ $sidebar-display: "sidebar-display";
       font-size: 1.5rem;
       letter-spacing: 0.5px;
       color: rgba(52, 52, 52, 0.99);
+      font-family: 'Do Hyeon', sans-serif;
     }
   }
 
