@@ -66,15 +66,15 @@ local xIndex = correct * self.n_questions + id
 
 **[계산 예시]**
 
-$$\mathbf{x}_t = \{ q_t, a_t \}$$ 를 시간에 따라서 풀어서 입력, 아래와 같은 조건을 가정할때
+$\mathbf{x}_t = \{ q_t, a_t \}$ 를 시간에 따라서 풀어서 입력, 아래와 같은 조건을 가정할때
 
-- $$q_t$$(M개의 문제 유형 태그) $$\in$$ {0, 1, 2, 3, 4}
-- $$a_t$$(정답 여부) $$\in$$ {0, 1}
-- 위의 조건에 따라서 만들어지는 one-hot vector의 크기는 $$x_t \in \{0, 1\}^{2M}$$, 2M = 10길이의 vector.
+- $q_t$(M개의 문제 유형 태그) $\in$ {0, 1, 2, 3, 4}
+- $a_t$(정답 여부) $$\in$$ {0, 1}
+- 위의 조건에 따라서 만들어지는 one-hot vector의 크기는 $x_t \in \{0, 1\}^{2M}$, 2M = 10길이의 vector.
 
 아래와 같은 예시 데이터가 있다고 가정한다.
 
-$$\mathbf{x}_{t=0 \sim 7}$$ = [{0, 0}, {2, 0}, {1, 1}, {4, 0}, {3, 1}, {3, 1}, {2, 1}, {0, 1}]
+$\mathbf{x}_{t=0 \sim 7}$ = [{0, 0}, {2, 0}, {1, 1}, {4, 0}, {3, 1}, {3, 1}, {2, 1}, {0, 1}]
 
 이를 표로 나타내면,
 
@@ -117,3 +117,100 @@ $$ L = \sum_{t} \ell(\mathbf{y}^T \delta{(q_{t+1})}, a_{t+1} ) $$
 $$J_{ij} = { {y(j \mid i)}\over{\sum_ky(j \mid k)} }$$   
 
 이때 $$y(j \mid i)$$는 exercise $i$에 대해서 정답을 맞췄을때 exercise $j$에 대한 RNN의 정답 확률을 나타낸다.
+
+
+# Appendix
+
+## Assistment Dataset Preprocessing
+
+저자의 `Lua` 구현체를 보면 Assistments 2009-2010 "skill builder" 데이터셋을 사용하는 것을 볼 수 있다.
+
+다운로드는 논문의 링크에서 변경되어서 [여기](https://sites.google.com/site/assistmentsdata/home/2009-2010-assistment-data?authuser=0)서 확인 가능하다. 데이터의 구조는 저자 리포와 현재 해당 링크의 구조가 조금 달라보인다.
+
+저자 리포에 있는 데이터의 전처리 방법을 확인해보았다.   
+파일 구조는 다음과 같다.
+
+```
+4
+51,51,51,51,
+0,1,1,1,
+9
+82,82,82,82,82,82,82,82,82,
+0,0,1,1,1,1,0,0,1,
+20
+0,0,0,0,0,9,9,9,11,11,12,12,12,12,12,14,14,14,14,14,
+1,0,1,1,0,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,
+1
+82,
+1,
+1
+82,
+0,
+49
+37,37,45,45,45,45,55,55,55,55,55,55,79,79,79,79,79,79,79,80,80,80,80,80,82,82,82,82,82,82,82,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,
+0,1,1,1,1,0,1,0,1,1,0,1,0,1,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,1,0,
+```
+{: file="builder_test.csv" }
+
+3줄씩 나눠서 하나의 블럭으로 보고 각 줄을 다음처럼 해석할 수 있다.
+
+```lua
+local nStepsStr = io.read() -- 총 문제 푼 횟수.
+local questionIdStr = io.read() -- 문제 ID.
+local correctStr = io.read() -- 맞춤 여부.
+```
+{: file="dataAssist.lua"}
+
+> 데이터의 `nStepsStr`가 단 몇개부터 몇백개까지 다양하기 때문에 코드를 보면 `max_steps`를 제한할 수 있도록 되어있지만 default가 nil로 설정되어있다.
+{: .prompt-info }
+
+다음으로 `student`라는 table을 만들어서 여기에 각 값들을 나누어서 넣어주고 있다.
+
+> questionId, correct는 0으로 채워진 torch array를 만들어주고 시작하기 때문에 데이터크기가 작은 경우는 0으로 padding 된 결과를 얻을 수 있다.
+{: .prompt-tip }
+
+```lua
+local student = {questionId = , correct = , n_answers = }
+-- 여기서 questionId, correct 키들에 대한 값은 torch array로 만들고 길이는 n_answers 값으로 같다.
+```
+{: file="dataAssist.lua"}
+
+
+다음으로 위의 과정을 데이터 만큼 반복한다. 이때 값이 없거나 1개만 있는 경우는 제외하게 된다.
+
+```lua
+local trainData = {}
+
+while(true) do
+	if(student == nil) then 
+	-- (nStepsStr == nil or questionIdStr == nil or correctStr == nil) 조건이면 데이터를 추가하지 않음
+		break 
+	end
+	if(student['n_answers'] >= 2) then 
+	-- 답변이 2개 이상일때만 추가.
+		table.insert(trainData, student)
+	end
+end
+```
+{: file="dataAssist.lua"}
+
+
+마지막으로 `trainData` table이 `semiSortedMiniBatches` function으로 들어가게 된다.
+
+이 데이터는 앞서 설명한것처럼 다음의 크기를 가지게 된다.
+
+```lua
+
+local inputX = torch.zeros(n_students, 2 * self.n_questions)
+-- the last student activity
+
+local inputY = torch.zeros(n_students, self.n_questions)
+-- the next question answered
+
+local truth = torch.zeros(n_students)
+-- whether the next question is correct
+```
+{: file="rnn.lua"}
+
+
+이 외에 코드를 보다보면 `inputM` 변수가 나오는데 RNN의 hidden layer 처음 입력으로 볼 수 있다. (0으로 초기화 시키는것을 볼 수 있다.) 
