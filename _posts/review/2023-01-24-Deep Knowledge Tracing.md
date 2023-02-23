@@ -217,3 +217,37 @@ local truth = torch.zeros(n_students)
 
 
 이 외에 코드를 보다보면 `inputM` 변수가 나오는데 RNN의 hidden layer 처음 입력으로 볼 수 있다. (0으로 초기화 시키는것을 볼 수 있다.) 
+
+
+## Evaluation
+
+검증은 ROC(Receiver Operating Characteristic curve)의 AUC 값을 이용한다.
+
+앞서 데이터셋을 전처리 했을떄 아래에서 x가 실제 값이라고 한다면 0은 padding된 값을 의미한다.
+
+```
+batch = [[x11, x12, 0, 0, 0], [x21, x22, x23, x24, 0], [x31, x32, x33, x34, x35]]
+n_answers = [2, 4, 5]
+```
+
+여기서 step을 하나씩 이동하면서 모든 prediction과 GT 값을 기록한다. mask 값을 이용해서 해당 step의 값이 진짜인지 padding인지 구분하고 있다. 위의 예제의 경우는 k(step)에 따라서 mask가 아래처럼 주어진다.
+
+```
+k = 1 : [1, 1, 1]
+k = 2 : [0, 1, 1]
+k = 3 : [0, 1, 1]
+.
+.
+```
+
+> 앞서 데이터를 처리할때 스텝의 길이가 2 이상만 데이터로 사용했기때문에 2번째 스텝부터 처리한듯 하다.
+{: .prompt-tip }
+
+필터링된 데이터들을 모으면 아래처럼 된다.
+
+```lua
+local pred = { {x11, x21, x31},{x12, x22, x32},{x23, x33},{x24, x34},{x35} }
+local gt = { {y11, y21, y31},{y12, y22, y32},{y23, y33},{y24, y34},{y35} }
+```
+
+마지막으로 모든 데이터에 대해서 순차적으로 FPR, TPR을 구하고  AUC를 구한다.
