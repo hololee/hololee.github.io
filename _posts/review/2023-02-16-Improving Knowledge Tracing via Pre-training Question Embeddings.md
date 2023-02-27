@@ -268,10 +268,53 @@ $$
 
 실험에서는 [ASSIST09](https://sites.google.com/site/assistmentsdata/home/assistment-2009-2010-data/skill-builder-data-2009-2010)(웹사이트는 주소가 변경된것 같고 [링크](https://drive.google.com/file/d/1NNXHFRxcArrU0ZJSb9BIL56vmUt5FhlE/view)에서 데이터는 받을 수 있다.), [ASSIST12](https://sites.google.com/site/assistmentsdata/2012-13-school-data-with-affect?authuser=0), [EdNet](https://github.com/riiid/ednet) 데이터를 사용하였다.
 
-![Untitled 3](../assets/img/posts/Untitled 3.png)
+![Untitled 3](../assets/img/posts/Untitled 3.png){: width="400"}
 
-![Untitled 4](../assets/img/posts/Untitled 4.png)
+![Untitled 4](../assets/img/posts/Untitled 4.png){: width="400"}
 
 DKT만 살펴보면 DKT는 skill-level의 모델로 Q의 스킬 정보를 입력으로 이용하게 된다. DKT-Q는 논문에서 DKT를 question-level로 확장시킨 모델 (Q 자체를 입력으로 받는다는데 어떤식으로 입력이 들어가는지는 모르겠다.)이다. PEBG+DKT는 임베딩된$q$인 $e$를 입력으로 넣어서 학습했을때의 결과이다.
 
 DKT만을 이용했을때보다 약 9% 정도의 AUC 향상이 있는것을 볼 수 있다.
+
+## question, skill level
+
+논문에서는 학습 테스트에서 모델을 `skill-level`, `question-level` 두개의 분류로 나누고 있다.   
+다른 논문들도 살펴보면 크게 다음과 같이 표현할 수 있을것 같다.
+
+
+### skill-level model
+
+살펴보면 skill-level은 DKT처럼 문제를 skill_id로 분류한다.
+
+```python
+n_skill = 10
+
+# 시간에 따른 기록.
+skills = [0, 1, 5, 2, 7]
+corrects = [0, 1, 0, 1, 0]
+
+input = [corrects * n_skill + skill_id for idx, skill_id in enumerate(skills)]
+```
+
+- question 자체의 context는 무시하고 category만 고민하기 때문에 일부 데이터의 손실이 있다.
+- 새로운 question에 대해서도 바로 적용이 가능하다.
+- 복합 category를 가진 문제에 대해서는 처리가 힘들다.
+
+
+### question-level model
+
+question-level은 DKT처럼 문제를 question_id로 분류한다.
+
+```python
+n_question = 2000
+
+# 시간에 따른 기록.
+questions = [15, 1200, 207, 219, 1700]
+corrects = [0, 1, 1, 1, 0]
+
+input = [corrects * n_question + question_id for idx, question_id in enumerate(questions)]
+```
+
+- question_id로 분류하기 때문에 같은 유형의 문제라도 문제자체의 context 정보를 가지고 있을 수 있다.
+- 하나의 question이 여러 skill category를 가지고 있어도 학습 가능하다.
+- 문제가 새롭게 추가되는경우 학습을 다시 진행해야 한다.
