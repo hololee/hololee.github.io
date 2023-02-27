@@ -107,15 +107,53 @@ $\mathbf{x}_{t=0 \sim 7}$ = [{0, 0}, {2, 0}, {1, 1}, {4, 0}, {3, 1}, {3, 1}, {2,
 
 ## Optimization
 
-관찰된 시간에 따른 sequence의 negative log likelihood를 objective loss로 사용한다. $$\delta{(q_{t+1})}$$을 $$t+1$$ 시점에서의 one-hot encoding 이라고 하고 $$\ell$$ 을 binary cross entropy 라고 할때 loss는 다음과 같이 주어진다.
+관찰된 시간에 따른 sequence의 negative log likelihood를 objective loss로 사용한다. $\delta{(q_{t+1})}$을 $t+1$ 시점에서의 one-hot encoding 이라고 하고 $\ell$ 을 binary cross entropy 라고 할때 loss는 다음과 같이 주어진다.
 
 $$ L = \sum_{t} \ell(\mathbf{y}^T \delta{(q_{t+1})}, a_{t+1} ) $$
+
+이때 binary cross entropy를 사용하는 이유는 DKT 모델의 output과 관계가 있다.
+
+> 아래와 같이 문제는 4개 카테고리, 실제 데이터는 3문제를 푼 사람이 있다고 하자.
+> 
+> ```python
+> categories = [0, 1, 2, 3]
+> 
+> questions = [0, 3, 1]
+> corrects = [0, 1, 0]
+> ```
+>
+> 이때 입력과 출력이 다음과 같이 주어진다.
+> 
+> ```python
+> # shape : (batch, time_seq, 2*categories)
+> inputs = [
+> 	[1, 0, 0, 0, 0, 0, 0, 0], # fail
+> 	[0, 0, 0, 0, 0, 0, 0, 1], # correct
+> 	[0, 1, 0, 0, 0, 0, 0, 0]  # correct
+> 	]
+> 
+> model_outputs = [
+> 	[x11, x12, x13, x14], # 각 category에 대한 확률.
+> 	[x21, x22, x23, x24]
+> ]
+>```
+> 여기서 input[t] 입력일때, input[t+1]의 category에 해당하는 output만 이용하여 [t]시점의 correctness를 학습한다.   
+> (즉, 주어지는 다음 입력이 특정 category에 대한 correctness 이므로 해당 category의 정답 가능성만 BCE를 통해서 계산한다.)
+>
+> ```python
+> # input 입력일때, 다음 input의 q에 해당하는 output을 이용하여 해당 correctness를 학습. 
+> loss = sum([
+> 	BCE(x14, 1), # step 1.	intput[2]가 category==3이고, correct==1
+> 	BCE(x22, 0) # step 2. input[3]이 category==1이고, correct==0
+> ])
+> ```
+{: .prompt-info }
 
 # Applications
 
 학습된 모델은 학습 커리큘럼 디자인 (Expectimax Search algorithm을 활용) 이나 데이터의 내적 컨셉을 이해하는데 활용될 수 있다.
 
-후자의 경우 exercise $$i$$ 와 $$j$$ 사이의 영향력$$J_{ij}$$를 다음과 같이 계산하였다.
+후자의 경우 exercise $$i$$ 와 $$j$$ 사이의 영향력$J_{ij}$를 다음과 같이 계산하였다.
 
 $$J_{ij} = { {y(j \mid i)}\over{\sum_ky(j \mid k)} }$$   
 
