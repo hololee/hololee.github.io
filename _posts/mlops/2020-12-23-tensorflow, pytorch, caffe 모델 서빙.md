@@ -2,7 +2,7 @@
 title: 
 date: 2020-12-23 13:47:00 +0900
 categories: [mlops]
-tags: [serv ing]     # TAG names should always be lowercase
+tags: [serving]     # TAG names should always be lowercase
 # pin: true
 # mermaid: true
 # math: true
