@@ -23,7 +23,7 @@ MLOps-Basics 시리즈의 목표는 모델의 `구축(building)`, `모니터링(
 
 ## 0주차: Project 준비
 
-<img src="assets/img/posts/v1.svg"/>
+<img src="assets/img/posts/v1.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-project-setup-part1)를 참고해주세요.
 
@@ -47,7 +47,7 @@ MLOps-Basics 시리즈의 목표는 모델의 `구축(building)`, `모니터링(
 
 ## 1주차: 모델 모니터링 - 가중치(Weights)와 바이어스(Biases)
 
-<img src="assets/img/posts/v1.svg"/>
+<img src="assets/img/posts/v1.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-wandb-integration)를 참고해주세요.   
 
@@ -74,7 +74,7 @@ References:
 
 ## 2주차: 구성(Configurations) - Hydra
 
-<img src="assets/img/posts/v1.svg"/>
+<img src="assets/img/posts/v1.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-hydra-config)를 참고해주세요.   
 
@@ -101,7 +101,7 @@ References
 
 ## Week 3: Data Version Control - DVC
 
-<img src="assets/img/posts/v1.svg"/>
+<img src="assets/img/posts/v1.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-dvc)를 참고해주세요.
 
@@ -128,7 +128,7 @@ References
 
 ## 4주차: 모델 패킹(packing) - ONNX
 
-<img src="assets/img/posts/v1-20220914083524022.svg"/>
+<img src="assets/img/posts/v1-20220914083524022.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-onnx)를 참고해주세요.
 
@@ -166,7 +166,7 @@ References
 
 ## 5주차: 모델 패킹(packaging) - 도커(docker)
 
-<img src="assets/img/posts/v1.svg"/>
+<img src="assets/img/posts/v1.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-docker)를 참고해주세요.
 
@@ -195,7 +195,7 @@ References
 
 ## 6주차: CI/CD - GitHub Actions
 
-<img src="assets/img/posts/v1-20220914083524022.svg"/>
+<img src="assets/img/posts/v1-20220914083524022.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-github-actions)를 참고해주세요.
 
@@ -222,7 +222,7 @@ References
 
 ## 7주차: Container Registry - AWS ECR
 
-<img src="assets/img/posts/v1-20220914083524022.svg"/>
+<img src="assets/img/posts/v1-20220914083524022.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-container-registry)를 참고해주세요.
 
@@ -243,7 +243,7 @@ Amazon Simple Storage Service (S3)는 인터넷을 이용하는 클라우드 스
 
 ## 8주차: 서버리스(Serverless) 배포 - AWS Lambda
 
-<img src="assets/img/posts/v1-20220914083524022.svg"/>
+<img src="assets/img/posts/v1-20220914083524022.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-serverless)를 참고해주세요.
 
@@ -262,7 +262,7 @@ Amazon Simple Storage Service (S3)는 인터넷을 이용하는 클라우드 스
 
 ## 9주차: 예측 모니터링 - Kibana
 
-<img src="assets/img/posts/v1-20220914083524022.svg"/>
+<img src="assets/img/posts/v1-20220914083524022.svg" alt="img"/>
 
 자세한 내용은 [블로그 포스트](https://www.ravirajag.dev/blog/mlops-monitoring)를 참고해주세요.
 

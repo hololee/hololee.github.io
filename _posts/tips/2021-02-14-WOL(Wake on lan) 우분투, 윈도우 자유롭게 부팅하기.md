@@ -100,7 +100,7 @@ $ sudo vi /etc/default/grub
 
  `GRUB_DEFAULT=saved` 를 지정하면 아래처럼 기본 부팅 순서를 선택할 수 있다.
 
-> If you set this to ‘saved’, then the default menu entry will be that saved by ‘GRUB_SAVEDEFAULT’ or grub-set-default. This relies on the environment block, which may not be available in all situations (see Environment block). [Link](http://www.gnu.org/software/grub/manual/grub/grub.html#Simple-configuration)
+> If you set this to ‘saved’, then the default menu entry will be that saved by ‘GRUB_SAVEDEFAULT’ or grub-set-default. This relies on the environment block, which may not be available in all situations (see Environment block). [Link](https://www.gnu.org/software/grub/manual/grub/grub.html#Simple-configuration)
 
 
 
