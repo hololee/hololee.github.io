@@ -6,43 +6,37 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: ko
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: 꾸물꾸물 # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the subtitle
+tagline:  # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  조금씩 조금씩 하다보면 언젠가는.. 멈추지 말자
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: ""
+url: "https://hololee.github.io"
 
 github:
-  username: github_username # change to your GitHub username
-
-twitter:
-  username: twitter_username # change to your Twitter username
+  username: hololee # change to your GitHub username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: jonghyeok lee
+  email: lccandol@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your Twitter homepage
-    - https://github.com/username # change to your GitHub homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://github.com/hololee # change to your GitHub homepage
+    - https://www.linkedin.com/in/hololee
 
 # Site Verification Settings
 webmaster_verifications:
@@ -98,7 +92,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: assets/img/about.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -109,14 +103,14 @@ toc: true
 
 comments:
   # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
+  provider: utterances # [disqus | utterances | giscus]
   # The provider options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: # <gh-username>/<repo>
-    issue_term: # < url | pathname | title | ...>
+    repo: hololee/hololee.github.io # <gh-username>/<repo>
+    issue_term: pathname # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
