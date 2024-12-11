@@ -5,7 +5,7 @@ order: 4
 ---
 <p align='center'>
   <a href="https://github.com/hololee">
-    <img src="https://capsule-render.vercel.app/api?type=transparent&fontColor=66AA66&height=150&section=header&text=Zayden&desc=AI%20Engineer&fontSize=70&DescSize=20&descAlignY=15&animation=twinkling">
+    <img src="https://capsule-render.vercel.app/api?type=transparent&fontColor=66AA66&height=150&section=header&text=Zayden&desc=AI%20Engineer&fontSize=70&DescSize=20&descAlignY=15&animation=twinkling" alt="img">
   </a>
 </p>
 <p align='center'>
