@@ -9,7 +9,7 @@ order: 4
   </a>
 </p>
 <p align='center'>
-  <a href="https://www.linkedin.com/in/hololee-0410201b3" style="text-decoration:none;"><img alt="Static Badge" src="https://img.shields.io/badge/LinkedIn-LinkedIn?style=flat&logo=LinkedIn&logoColor=%230A66C2&color=%23ffffff"></a>
+  <a href="https://www.linkedin.com/in/hololee/" style="text-decoration:none;"><img alt="Static Badge" src="https://img.shields.io/badge/LinkedIn-LinkedIn?style=flat&logo=LinkedIn&logoColor=%230A66C2&color=%23ffffff"></a>
   <a href="https://hololee.github.io"><img alt="Static Badge" src="https://img.shields.io/badge/Blog-Blog?style=flat&logo=googlechrome&logoColor=%23333333&color=%23ffffff"></a>
 </p>
 <br/>
